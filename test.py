@@ -36,4 +36,4 @@ elif args.method == 'dp':
     sol = mwis.dynamic_programming(graph, p=0, q=len(graph))
 
 #prune = set(list(range(n))) - set(sol)
-print(sol)
+print(list(sol))
