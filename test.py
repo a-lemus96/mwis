@@ -12,8 +12,6 @@ import mwis
 parser = argparse.ArgumentParser(description='Solution to MWIS problem')
 parser.add_argument('-file', type=str, default='wis1.txt',
                     help='Input file to read path graph from')
-parser.add_argument('-method', type=str, default='dc',
-                    help='Method for solving problem, dc or dp')
 
 # parse arguments
 args = parser.parse_args()
@@ -33,12 +31,11 @@ graph = np.array(graph) # cast to numpy array
 #graph = np.array([294, 289, 230, 84, 66])
 #print(graph)
 
-# solve mwis using whichever method chosen
-#if args.method == 'dc':
+# solve mwis using DC and DP
 sol1 = mwis.divide_conquer(graph, p=0, q=len(graph))
-#elif args.method == 'dp':
 sol2 = mwis.dynamic_programming(graph)
 
-#prune = set(list(range(n))) - set(sol)
-print("Final result")
-print(np.sum(graph[sol1]) - np.sum(graph[sol2]))
+#print(f"Solution using DC approach: {list(sol1)}")
+#print(f"Solution using DP approach: {list(sol2)}")
+print(f"Total weight for DC solution: {np.sum(graph[sol1])}")
+print(f"Total weight for DP solution: {np.sum(graph[sol2])}")

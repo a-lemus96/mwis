@@ -12,7 +12,6 @@ def divide_conquer(G: ndarray, p: int, q: int) -> ndarray:
         q: right bound
     Returns:
         idxs: array of indices for elements in maximum weighted independent set"""
-    #print(p, q)
     if q - p <= 1: # terminal case
         return np.array(p).reshape(-1)
     # compute index for mid element
@@ -20,9 +19,7 @@ def divide_conquer(G: ndarray, p: int, q: int) -> ndarray:
 
     # solve and right subproblems
     idxs_left = divide_conquer(G, p, mid)
-    #print(idxs_left)
     idxs_right = divide_conquer(G, mid, q)
-    #print(idxs_right)
 
     # combine solutions
     if idxs_right[0] - idxs_left[-1] > 1:
@@ -47,10 +44,8 @@ def divide_conquer(G: ndarray, p: int, q: int) -> ndarray:
 
         # compare solutions
         if sum1 >= sum2:
-            #print(f"Returned option: {opt1}")
             return opt1
         else:
-            #print(f"Returned option: {opt2}")
             return opt2
 
 def dynamic_programming(G: ndarray):
