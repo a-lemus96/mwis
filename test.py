@@ -28,12 +28,17 @@ with open(path, 'r') as f:
         graph.append(int(node))
 
 graph = np.array(graph) # cast to numpy array
+#graph = np.array([4, 2 ,8, 3, 2, 6])
+#graph = np.random.randint(0, 500, 5)
+#graph = np.array([294, 289, 230, 84, 66])
+#print(graph)
 
 # solve mwis using whichever method chosen
-if args.method == 'dc':
-    sol = mwis.divide_conquer(graph, p=0, q=len(graph))
-elif args.method == 'dp':
-    sol = mwis.dynamic_programming(graph, p=0, q=len(graph))
+#if args.method == 'dc':
+sol1 = mwis.divide_conquer(graph, p=0, q=len(graph))
+#elif args.method == 'dp':
+sol2 = mwis.dynamic_programming(graph)
 
 #prune = set(list(range(n))) - set(sol)
-print(list(sol))
+print("Final result")
+print(np.sum(graph[sol1]) - np.sum(graph[sol2]))
